@@ -13,12 +13,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-6&8i557_sw!-l=fgge$r8k%s+3akd6mm-@^ttz!v9(irv0mi70')
 
-DEBUG = os.getenv('DEBUG', "False") == "True"
+DEBUG = os.getenv('DEBUG', "True") == "True"
+if (DEBUG): print("\033[93m DEBUG ENABLED \033[0m")
 
 ALLOWED_HOSTS = ['django', '127.0.0.1', 'localhost', 'protolemon.com', '.protolemon.com']
 
 CORS_ALLOW_HEADERS = ['django', '127.0.0.1', 'localhost', 'protolemon.com', '.protolemon.com']
-CSRF_TRUSTED_ORIGINS = ['https://*.protolemon.com','https://*.127.0.0.1']
+CORS_ORIGIN_WHITELIST = ['http://localhost:8080']
+CSRF_TRUSTED_ORIGINS = ['https://*.protolemon.com','https://*.127.0.0.1', 'http://localhost:8080']
 
 
 INSTALLED_APPS = [
@@ -126,8 +128,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = '/static/'
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = os.path.join(BASE_DIR, 'static/')
+STATIC_CLIENT = os.path.join(os.path.dirname(BASE_DIR), 'static/')
+
+STATICFILES_DIRS = [
+    STATIC_CLIENT,
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

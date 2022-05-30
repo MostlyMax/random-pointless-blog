@@ -13,7 +13,6 @@ click-repl==0.2.0
 deprecated==1.2.13
 django==4.0.4
 django-cors-headers==3.12.0
-django-crontab==0.7.1
 djangorestframework==3.13.1
 flower==1.0.0
 gunicorn==20.1.0

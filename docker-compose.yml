@@ -1,0 +1,86 @@
+version: '3'
+
+services:
+
+  server:
+    volumes:
+      - static:/static
+      - ./server/:/app/
+    env_file:
+      - ./env/.env
+    build: ./server
+    command: /start
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+
+  celery_worker:
+    build: ./server
+    command: /start-celeryworker
+    volumes:
+      - ./server/:/app/
+    depends_on:
+      - server
+    env_file:
+      - ./env/.env
+
+  celery_beat:
+    build: ./server
+    command: /start-celerybeat
+    volumes:
+      - ./server/:/app/
+    depends_on:
+      - server
+    env_file:
+      - ./env/.env
+
+  flower:
+    build: ./server
+    command: /start-flower
+    volumes:
+      - ./server/:/app
+    env_file:
+      - ./env/.env
+    ports:
+      - 5555:5555
+    depends_on:
+      - server
+
+  client:
+    build: ./client
+    volumes:
+      - dist:/client/dist/
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - dist:/client/dist/
+      - static:/static
+      - ./data/certbot/letsencrypt:/etc/letsencrypt
+      - certbot_challenges:/var/www/html
+    depends_on:
+      - server
+      - client
+    ports:
+      - "80:80"
+      - "443:443"
+
+  redis:
+    image: redis:6-alpine
+
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./env/.env.db
+
+volumes:
+  dist:
+  static:
+  postgres_data:
+  certbot_challenges:
+  
+

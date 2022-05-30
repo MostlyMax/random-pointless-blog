@@ -7,7 +7,6 @@ import os
 from pathlib import Path
 from celery.schedules import crontab
 from . import tasks
-# import blog.tasks
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_crontab',
     'rest_framework',
     'corsheaders',
     'blog',
@@ -85,7 +83,7 @@ DATABASES = {
 CELERY_BEAT_SCHEDULE = {
     "random_feature": {
         "task": "blog.tasks.get_random_feature_task",
-        "schedule": crontab(minute="*/1"),
+        "schedule": crontab(minute="0", hour="0"),
     },
 }
 

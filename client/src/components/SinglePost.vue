@@ -2,6 +2,7 @@
     <div class='post'>
         <h3>{{ post.title }}</h3>
         <p>{{ post.body }}</p>
+        <p id="post-date">{{ post.featured_date }}</p>
     </div>
 </template>
 
@@ -25,5 +26,9 @@ export default {
 
 .post h3 {
     padding: 0;
+}
+
+#post-date {
+    
 }
 </style>

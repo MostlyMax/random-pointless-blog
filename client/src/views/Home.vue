@@ -16,6 +16,7 @@ export default {
     setup() {
         const posts = ref([])
         const error = ref(null)
+        const date_options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
 
         const loadPosts = async () => {
             try {
@@ -25,7 +26,9 @@ export default {
                 if (!(response.status === 200)) { throw Error("Unable to load data")}
 
                 console.log(response.data)
+                const date = Date.parse(response.data.featured_date)
                 posts.value = response.data
+                posts.value.featured_date = date.toLocaleDateString(undefined, options)
             }
             catch(err) {
                 error.value = err.message

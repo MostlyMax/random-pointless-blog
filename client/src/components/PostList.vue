@@ -11,7 +11,7 @@
 import SinglePost from './SinglePost.vue'
 
 export default {
-    components: {SinglePost },
+    components: { SinglePost },
     props: ['posts'],
 }
 </script>

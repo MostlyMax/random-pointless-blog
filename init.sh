@@ -27,6 +27,7 @@ read -p "### Enter a new subdomain name: " subdomain
 sed "s/example\./${subdomain}./g" ./nginx/templates/default-template.conf > ./nginx/default.conf
 sed "s/example\./${subdomain}./g" ./nginx/templates/init-template.conf > ./nginx/init.conf
 
+
 domains="${subdomain}.${domain} www.${subdomain}.${domain}"
 darrays=(${domains})
 d_domains=("${darrays[*]/#/-d }") 

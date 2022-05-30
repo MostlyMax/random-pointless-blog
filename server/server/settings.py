@@ -21,16 +21,6 @@ ALLOWED_HOSTS = ['django', '127.0.0.1', 'localhost', 'protolemon.com', '.protole
 CORS_ALLOW_HEADERS = ['django', '127.0.0.1', 'localhost', 'protolemon.com', '.protolemon.com']
 CSRF_TRUSTED_ORIGINS = ['https://*.protolemon.com','https://*.127.0.0.1']
 
-CELERY_BEAT_SCHEDULE = {
-    "random_feature": {
-        "task": "blog.tasks.get_random_feature_task",
-        "schedule": crontab(minute="*/1"),
-    },
-}
-
-# Celery Settings
-CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
-CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,6 +80,18 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+
+
+CELERY_BEAT_SCHEDULE = {
+    "random_feature": {
+        "task": "blog.tasks.get_random_feature_task",
+        "schedule": crontab(minute="*/1"),
+    },
+}
+
+# Celery Settings
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 
 
 # Password validation

@@ -132,13 +132,13 @@ body {
 		flex-direction: column;
 		padding: min(30vh, 10rem) 0;
 
-		-webkit-transform: translateX(100%);
+		-webkit-transform: translate(100%, 0);
 		transform: translateX(100%);
 		transition: transform 350ms ease-out;
 	}
 
 	.nav[data-visible="true"] {
-		-webkit-transform: translateX(0%);
+		-webkit-transform: translate(0%, 0);
 		transform: translateX(0%);
 	}
 

@@ -23,7 +23,7 @@ export default {
 .post {
     background: var(--bg-black);
     color: var(--text-white);
-    margin: 20px 20% 20px 20%;
+    margin: 20px 0 20px 0;
     padding: 30px;
     border-radius: 20px;
 

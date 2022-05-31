@@ -73,7 +73,8 @@ body {
 	height: 100%;
 	letter-spacing: 2px;
 	font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-	overflow: hidden;
+	overflow: scroll;
+	overflow-x: hidden;
 }
 
 #page-container {

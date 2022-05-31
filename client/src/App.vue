@@ -5,15 +5,15 @@
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
 				<button class="mobile-nav-toggle" @click="toggleNavMenu"></button>
 				<div class="nav" data-visible="false">
-					<router-link :to="{ path: '/' }">Home</router-link>
-					<router-link :to="{ name: 'What' }">What???</router-link>
-					<router-link :to="{ name: 'Post' }">Post</router-link>
+					<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
+					<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
+					<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
 				</div>
 			</div>
 			<router-view/>
 		</div>
 		<div id="footer">
-			<p> Protolemon © 2020. All Rights Reserved.</p>
+			<p> Protolemon © 2022. All Rights Reserved.</p>
 		</div>
 	</div>
 </template>
@@ -49,7 +49,12 @@ export default {
 			else if (visibility === "true") {
 				nav.setAttribute("data-visible", false)
 			}
-		}
+		},
+		hideNavMenu () {
+			const nav = document.querySelector(".nav")
+			const navToggle = document.querySelector(".mobile-nav-toggle")
+			nav.setAttribute("data-visible", false)
+		},
 	},
 }
 </script>
@@ -125,7 +130,7 @@ body {
 		background: var(--bg-black);
 
 		flex-direction: column;
-		padding: min(30vh, 10rem) 2em;
+		padding: min(30vh, 10rem) 0;
 
 		transform: translateX(100%);
 		transition: transform 350ms ease-out;

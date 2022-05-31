@@ -40,7 +40,7 @@ div.what-page {
     margin: auto;
     width: 60%;
     font-size: 20px;
-    text-align: justify;
+    text-align: left;
 }
 
 div.what-page h1 {

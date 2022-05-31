@@ -96,7 +96,7 @@ export default {
     flex-direction: column;
     background: var(--bg-black);
     margin: 20px 20% 20px 20%;
-    padding: 30px;
+    padding: 30px 0;
     border-radius: 20px;
     font: inherit;
 }
@@ -122,7 +122,7 @@ export default {
 }
 
 .form-title {
-    margin: 10px;
+    margin: 10px 30px;
     font-weight: bold;
     padding: 10px;
     font-size: 24px;
@@ -133,7 +133,7 @@ export default {
 }
 
 .form-text {
-    margin: 10px;
+    margin: 10px 30px;
     padding: 10px 10px 75px 10px;
     resize: none;
     background-color: var(--bg-black);
@@ -179,6 +179,7 @@ export default {
     color: var(--cyan);
     align-self: flex-start;
     padding: 0px 0px 0px 10px;
+    margin: 10px 30px;
 }
 
 </style>

@@ -21,4 +21,11 @@ export default {
     margin: auto;
     width: 70%;
 }
+
+@media (max-width: 35em) {
+    .post-list {
+        margin: auto;
+        width: 100%;
+    }
+}
 </style>

@@ -1,9 +1,14 @@
 <template>
+    <Slide>
+      <a id="home" href="#">
+        <span>Home</span>
+      </a>
+    </Slide>
 	<div id="page-container">
 		<div id="content-wrap" >
 			<div class="primary-header">
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
-				<button class="mobile-nav-toggle" @click="toggleNavMenu"></button>
+				<!-- <button class="mobile-nav-toggle" @click="toggleNavMenu"></button> -->
 				<div class="nav" data-visible="false">
 					<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
 					<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
@@ -22,9 +27,12 @@
 import Home from './views/Home.vue'
 import What from './views/What.vue'
 import Post from './views/Post.vue'
+import { Slide } from 'vue3-burger-menu'
 
 export default {
-	components: { Home, What, Post },
+	components: { 
+		Home, What, Post, Slide 
+	},
 	// metaInfo: {
 	//   title: "Random Blog",
 	//   titleTemplate: "%s | An Absolutely Pointless Experience"
@@ -78,6 +86,7 @@ body {
 	height: 100%;
 	letter-spacing: 2px;
 	font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: min(4vw, 16px);
 }
 
 #page-container {
@@ -118,6 +127,7 @@ body {
 
 .mobile-nav-toggle {
 	display: none;
+	visibility: hidden;
 }
 
 @media (max-width: 35em) {

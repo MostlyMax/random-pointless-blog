@@ -21,8 +21,8 @@ export default {
         const loadPosts = async () => {
             try {
                 // { params: { amount: 25 } }
-                const response = await axios.get('/api/blog/featured/')
-                //const response = await axios.get('http://localhost:8000/api/blog/featured/')
+                // const response = await axios.get('/api/blog/featured/')
+                const response = await axios.get('http://localhost:8000/api/blog/featured/')
 
                 if (!(response.status === 200)) { throw Error("Unable to load data")}
 
@@ -43,10 +43,22 @@ export default {
 
 <style>
 .home-page {
-    font-size: 20px;
+    font-size: min(4vw, 16px);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.home-page h1 {
+    font-weight: 900;
+}
+
+@media (max-width: 35em) {
+    .home-page {
+        justify-content: flex-start;
+    }
+}
+
+
 
 </style>

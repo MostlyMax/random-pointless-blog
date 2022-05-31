@@ -28,7 +28,14 @@ export default {
     border-radius: 20px;
 
     text-align: left;
-    /* font-size: 18px; add if necessary */
+}
+
+@media (max-width: 35em) {
+    .post {
+        border-radius: 0;
+        margin: 5px 0 5px 0;
+        padding: 10px;
+    }
 }
 
 .post h3 {
@@ -40,6 +47,7 @@ export default {
 .post p {
     padding: 10px;
     margin: 0px 0px 10px;
+    font-size: min(4vw, 16px);
 }
 
 #post-date {

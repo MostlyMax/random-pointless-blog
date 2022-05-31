@@ -133,11 +133,13 @@ body {
 		padding: min(30vh, 10rem) 0;
 
 		transform: translateX(100%);
+		-webkit-transform: translateX(100%);
 		transition: transform 350ms ease-out;
 	}
 
 	.nav[data-visible="true"] {
 		transform: translateX(0%);
+		-webkit-transform: translateX(100%);
 	}
 
 	.mobile-nav-toggle {

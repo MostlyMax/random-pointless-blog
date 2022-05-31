@@ -1,6 +1,6 @@
 <template>
 	<div id="page-container">
-		<div id="content-wrap">
+		<div id="content-wrap" >
 			<div class="primary-header">
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
 				<button class="mobile-nav-toggle" @click="toggleNavMenu"></button>
@@ -124,11 +124,14 @@ body {
 	.nav {
 		--gap: 1em;
 		margin-right: 0;
-		display: flex;
 		position: fixed;
-		inset: 0 0 0 30%;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 30%;
 		background: var(--bg-black);
 
+		display: flex;
 		flex-direction: column;
 		padding: min(30vh, 10rem) 0;
 

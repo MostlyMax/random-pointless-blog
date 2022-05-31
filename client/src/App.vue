@@ -132,14 +132,14 @@ body {
 		flex-direction: column;
 		padding: min(30vh, 10rem) 0;
 
-		transform: translateX(100%);
 		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
 		transition: transform 350ms ease-out;
 	}
 
 	.nav[data-visible="true"] {
+		-webkit-transform: translateX(0%);
 		transform: translateX(0%);
-		-webkit-transform: translateX(100%);
 	}
 
 	.mobile-nav-toggle {
@@ -152,8 +152,8 @@ body {
 		filter: invert(1);
 
 		border: 0;
-		width: 4rem;
-		height: 4rem;
+		width: 1.5rem;
+		height: 1.5rem;
 		top: 2rem;
 		right: 1rem;
 	}

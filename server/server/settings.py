@@ -85,7 +85,7 @@ DATABASES = {
 CELERY_BEAT_SCHEDULE = {
     "random_feature": {
         "task": "blog.tasks.get_random_feature_task",
-        "schedule": crontab(minute="*", hour="*"),
+        "schedule": crontab(minute="25", hour="8"),
     },
 }
 

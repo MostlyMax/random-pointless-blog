@@ -78,17 +78,17 @@ body {
 	height: 100%;
 	letter-spacing: 2px;
 	font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-	overflow: scroll;
-	overflow-x: hidden;
 }
 
 #page-container {
-  position: relative;
-  min-height: 100vh;
+  	position: relative;
+  	overflow: scroll;
+  	overflow-x: hidden;
+  	min-height: 100vh;
 }
 
 #content-wrap {
-  padding-bottom: 2.5rem;    /* Footer height */
+  	padding-bottom: 2.5rem;    /* Footer height */
 }
 
 #app {

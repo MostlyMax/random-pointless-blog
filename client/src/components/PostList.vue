@@ -18,7 +18,6 @@ export default {
 
 <style>
 .post-list {
-    max-width: 70rem;
     margin: auto;
 }
 </style>

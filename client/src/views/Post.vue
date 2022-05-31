@@ -4,6 +4,7 @@
     <form class="entry-form" @submit.prevent="this.handleSubmit" v-on:submit.prevent>
         <input class="form-title" v-model="title" type="text" placeholder="title" maxlength="64" required />
         <textarea class="form-text" v-model="text" type="text" placeholder="text: optional" maxlength="256" />
+        <p id="form-post-date">{{ form_date }}</p>
         <button>Submit</button>
     </form>
     <div class="warning" v-if="multiple_entry_warning">Can't make more than one entry per day!</div>
@@ -28,6 +29,10 @@ export default {
         const multiple_entry_warning = ref(false)
         const error_warning = ref(false)
         const entry_submit_success = ref(false)
+
+        const date_options = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' };
+        const date = new Date()
+        const form_date = date.toLocaleDateString(undefined, date_options)
         
 
         const recaptcha = async () => {
@@ -76,7 +81,7 @@ export default {
             }
         }
 
-        return { title, text, handleSubmit, multiple_entry_warning, error_warning, entry_submit_success }
+        return { title, text, handleSubmit, multiple_entry_warning, error_warning, entry_submit_success, form_date }
     },
 }
 </script>
@@ -84,42 +89,71 @@ export default {
 <style>
 .post-page {
     margin: auto;
-    font-size: 20px;
 }
 
 .entry-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: var(--bg-black);
+    margin: 20px 20% 20px 20%;
+    padding: 30px;
+    border-radius: 20px;
+    font: inherit;
 }
 
 .entry-form button {
-background: #0c1e3e;
-    color: white;
-    font-weight: bold;
-    border-radius: 100px;
-    margin: 5px;
-    padding: 5px 30px 5px 30px;
+    background: var(--blue);
+    color: var(--text-white);
+
+    width: 30%;
+    align-self: center;
+    border-radius: 10px;
+    margin: 20px 0px 0px 0px;
+    padding: 10px;
     border-style: none;
-    font: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.entry-form button:hover {
+    background-color: var(--cyan);
+    color: var(--bg-black);
 }
 
 .form-title {
     margin: 10px;
-    width: 60%;
-    padding: 10px 5px 10px 5px;
-    font: inherit;
+    font-weight: bold;
+    padding: 10px;
     font-size: 24px;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
 }
 
 .form-text {
     margin: 10px;
-    width: 60%;
-    padding: 10px 5px 100px 5px;
+    padding: 10px 10px 75px 10px;
     resize: none;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    border: 1px solid var(--cyan);
+    border-radius: 10px;
     font: inherit;
-    font-size: 18px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgrey;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lightgrey;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: lightgrey;
 }
 
 .warning {
@@ -138,6 +172,13 @@ background: #0c1e3e;
     color: white;
     background: green;
     border-radius: 4px;
+}
+
+#form-post-date {
+    font-size: small;
+    color: var(--cyan);
+    align-self: flex-start;
+    padding: 0px 0px 0px 10px;
 }
 
 </style>

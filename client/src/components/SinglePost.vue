@@ -21,11 +21,11 @@ export default {
 
 <style>
 .post {
-    background: #122c5a;
-    color: white;
-    margin: 20px 10% 20px 10%;
-    padding: 5px 15px 5px 15px;
-    border-radius: 10px;
+    background: var(--bg-black);
+    color: var(--text-white);
+    margin: 20px 20% 20px 20%;
+    padding: 30px;
+    border-radius: 20px;
 
     text-align: left;
     /* font-size: 18px; add if necessary */
@@ -33,17 +33,17 @@ export default {
 
 .post h3 {
     padding: 0;
-    margin: 5px 0px 5px 0px;
+    margin: 10px;
     font-weight: bold;
 }
 
 .post p {
-    padding: 0;
+    padding: 10px;
     margin: 0px 0px 10px;
 }
 
 #post-date {
     font-size: small;
-    color:cyan;
+    color: var(--cyan);
 }
 </style>

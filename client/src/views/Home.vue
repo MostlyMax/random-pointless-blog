@@ -21,8 +21,8 @@ export default {
         const loadPosts = async () => {
             try {
                 // { params: { amount: 25 } }
-                const response = await axios.get('/api/blog/featured/')
-                // const response = await axios.get('http://localhost:8000/api/blog/featured/')
+                // const response = await axios.get('/api/blog/featured/')
+                const response = await axios.get('http://localhost:8000/api/blog/featured/')
 
                 if (!(response.status === 200)) { throw Error("Unable to load data")}
 

@@ -1,9 +1,10 @@
 <template>
 	<div id="page-container">
 		<div id="content-wrap">
-			<div id="nav-bar">
+			<div class="primary-header">
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
-				<div id="nav">
+				<button class="mobile-nav-toggle" @click="toggleNavMenu"></button>
+				<div class="nav" data-visible="false">
 					<router-link :to="{ path: '/' }">Home</router-link>
 					<router-link :to="{ name: 'What' }">What???</router-link>
 					<router-link :to="{ name: 'Post' }">Post</router-link>
@@ -36,7 +37,20 @@ export default {
 					}
 			)
 		},
-	}
+		toggleNavMenu () {
+			const nav = document.querySelector(".nav")
+			const navToggle = document.querySelector(".mobile-nav-toggle")
+
+			const visibility = nav.getAttribute("data-visible")
+
+			if (visibility === "false") {
+				nav.setAttribute("data-visible", true)
+			}
+			else if (visibility === "true") {
+				nav.setAttribute("data-visible", false)
+			}
+		}
+	},
 }
 </script>
 
@@ -59,6 +73,7 @@ body {
 	height: 100%;
 	letter-spacing: 2px;
 	font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+	overflow: hidden;
 }
 
 #page-container {
@@ -79,12 +94,78 @@ body {
 	margin: 0;
 }
 
-#nav-bar {
-	padding: 0;
+.primary-header {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	background: var(--bg-black);
+}
+
+.nav {
+	list-style: none;
+	display: flex;
+	padding: 0;
 	margin: 0;
+	margin-right: 5rem;
+	gap: var(--gap, 1rem);
+}
+
+.mobile-nav-toggle {
+	display: none;
+}
+
+@media (max-width: 35em) {
+	.nav {
+		--gap: 1em;
+		margin-right: 0;
+		display: flex;
+		position: fixed;
+		inset: 0 0 0 30%;
+		background: var(--bg-black);
+
+		flex-direction: column;
+		padding: min(30vh, 10rem) 2em;
+
+		transform: translateX(100%);
+		transition: transform 350ms ease-out;
+	}
+
+	.nav[data-visible="true"] {
+		transform: translateX(0%);
+	}
+
+	.mobile-nav-toggle {
+		display: block;
+		z-index: 99;
+		position: absolute;
+
+		background: url("assets/menu.svg");
+		background-repeat: no-repeat;
+		filter: invert(1);
+
+		border: 0;
+		width: 4rem;
+		height: 4rem;
+		top: 2rem;
+		right: 1rem;
+	}
+}
+
+.nav a {
+	text-decoration: none;
+
+	color: var(--text-white);
+	background: var(--blue);
+	
+	padding: 12px 20px 12px 20px;
+	border-radius: 10px;
+	margin: 15px;
+}
+
+.nav a.router-link-exact-active,
+.nav a:hover {
+	color: var(--bg-black);
+	background-color: var(--cyan);
 }
 
 #footer {
@@ -109,30 +190,8 @@ body {
 .logo {
 	height: 70px;
 	width: 70px;
-	margin: 10px 10px 10px 5%;
-}
-
-#nav {
-	margin-left: auto;
-	margin-right: 10%;
-	padding: 20px;
-}
-
-#nav a {
-	text-decoration: none;
-
-	color: var(--text-white);
-	background: var(--blue);
-	
-	padding: 12px 20px 12px 20px;
-	border-radius: 10px;
-	margin: 15px;
-}
-
-#nav a.router-link-exact-active,
-#nav a:hover {
-	color: var(--bg-black);
-	background-color: var(--cyan);
+	margin: 1rem;
+	margin-left: 3rem;
 }
 
 </style>

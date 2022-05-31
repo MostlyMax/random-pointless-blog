@@ -20,6 +20,5 @@ export default {
 .post-list {
     margin: auto;
     width: 70%;
-    background: steelblue;
 }
 </style>

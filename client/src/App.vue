@@ -5,15 +5,15 @@
 			<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
 			<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
     	</Slide>
-		<div id="content-wrap" >
-			<div class="primary-header">
-				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
-				<div class="nav">
-					<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
-					<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
-					<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
-				</div>
+		<div class="primary-header">
+			<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
+			<div class="nav">
+				<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
+				<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
+				<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
 			</div>
+		</div>
+		<div id="content-wrap" >
 			<router-view/>
 		</div>
 		<div id="footer">
@@ -83,6 +83,7 @@ body {
 
 #content-wrap {
   	padding-bottom: 2.5rem;
+	padding-top: 6rem;
 }
 
 #app {
@@ -93,10 +94,17 @@ body {
 	color: #0c1e3e;
 	margin: 0;
 	padding: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Header and Nav */
 .primary-header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+
+	z-index: 1;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -119,6 +127,7 @@ body {
 	visibility: hidden;
 
 	position: fixed;
+	z-index: 10;
 	width: 36px;
 	height: 30px;
 	right: 36px;
@@ -217,7 +226,6 @@ body {
 	height: 70px;
 	width: 70px;
 	margin: 1rem;
-	margin-left: 1rem;
 }
 
 </style>

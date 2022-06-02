@@ -48,6 +48,7 @@ export default {
     padding: 10px;
     margin: 0px 0px 10px;
     font-size: min(4vw, 16px);
+    font-weight: lighter;
 }
 
 #post-date {

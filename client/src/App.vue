@@ -127,16 +127,16 @@ body {
 	cursor: pointer;
 }
 
-.bm-burger-bars {
+#app .bm-burger-bars {
 	background-color: var(--bg-white);
 }
 
-.bm-menu {
+#app .bm-menu {
 	background-color: var(--bg-black); /* Black*/
 	padding-top: 60px; /* Place content 60px from the top */
 }
 
-.bm-item-list {
+#app .bm-item-list {
 	margin-left: 10%;
 	margin-right: 10%;
 	padding: 10px;
@@ -148,7 +148,7 @@ body {
 		visibility: hidden;
 	}
 
-	.bm-burger-button {
+	#app .bm-burger-button {
 		display: block;
 		visibility: visible;
 	}
@@ -171,7 +171,7 @@ body {
 }
 
 .nav a,
-.bm-item-list a {
+#app .bm-item-list a {
 	text-decoration: none;
 
 	color: var(--text-white);
@@ -182,12 +182,12 @@ body {
 	margin: 15px;
 }
 
-.bm-item-list a {
+#app .bm-item-list a {
 	margin: 2em 0;
 }
 
-.bm-item-list a.router-link-exact-active,
-.bm-item-list a:hover, 
+#app .bm-item-list a.router-link-exact-active,
+#ap .bm-item-list a:hover, 
 .nav a.router-link-exact-active,
 .nav a:hover {
 	color: var(--bg-black);

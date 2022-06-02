@@ -3,7 +3,8 @@
     <h1>Make an entry</h1>
     <form class="entry-form" @submit.prevent="this.handleSubmit" v-on:submit.prevent>
         <input class="form-title" v-model="title" type="text" placeholder="title" maxlength="64" required />
-        <textarea class="form-text" v-model="text" type="text" placeholder="text: optional" maxlength="256" />
+        <textarea class="form-text" v-model="text" type="text" placeholder="text: optional" maxlength="512" @input='countChar()'/>
+        <span id="word-count">{{ char_count }} / 512</span>
         <p id="form-post-date">{{ form_date }}</p>
         <button>Submit</button>
     </form>
@@ -25,6 +26,7 @@ export default {
 
         const title = ref("")
         const text = ref("")
+        const char_count = ref(0)
 
         const multiple_entry_warning = ref(false)
         const error_warning = ref(false)
@@ -34,6 +36,9 @@ export default {
         const date = new Date()
         const form_date = date.toLocaleDateString(undefined, date_options)
         
+        const countChar = () => {
+            char_count.value = text.value.length
+        }
 
         const recaptcha = async () => {
             await recaptchaLoaded()
@@ -81,7 +86,10 @@ export default {
             }
         }
 
-        return { title, text, handleSubmit, multiple_entry_warning, error_warning, entry_submit_success, form_date }
+        return { title, text, char_count, 
+                 handleSubmit, countChar,
+                 multiple_entry_warning, error_warning, entry_submit_success, 
+                 form_date }
     },
 }
 </script>
@@ -92,6 +100,7 @@ export default {
 }
 
 .entry-form {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: var(--bg-black);
@@ -101,11 +110,26 @@ export default {
     font: inherit;
 }
 
+#word-count {
+    position: absolute;
+    z-index: 100;
+    bottom: 8.5rem;
+    right: 1rem;
+    font-size: small;
+    color: var(--cyan);
+    padding: 0px 0px 0px 10px;
+    margin: 10px 30px;
+}
+
 @media (max-width: 35em) {
     .entry-form {
         border-radius: 5px;
         margin: 0;
         padding: 10px 0;
+    }
+    #word-count {
+        bottom: 110px;
+        right: 1rem;
     }
 }
 
@@ -189,5 +213,7 @@ export default {
     padding: 0px 0px 0px 10px;
     margin: 10px 30px;
 }
+
+
 
 </style>

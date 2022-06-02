@@ -8,8 +8,7 @@
 		<div id="content-wrap" >
 			<div class="primary-header">
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
-				<!-- <button class="mobile-nav-toggle" @click="toggleNavMenu"></button> -->
-				<div class="nav" data-visible="false">
+				<div class="nav">
 					<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
 					<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
 					<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
@@ -44,24 +43,6 @@ export default {
 						path: '/',
 					}
 			)
-		},
-		toggleNavMenu () {
-			const nav = document.querySelector(".nav")
-			const navToggle = document.querySelector(".mobile-nav-toggle")
-
-			const visibility = nav.getAttribute("data-visible")
-
-			if (visibility === "false") {
-				nav.setAttribute("data-visible", true)
-			}
-			else if (visibility === "true") {
-				nav.setAttribute("data-visible", false)
-			}
-		},
-		hideNavMenu () {
-			const nav = document.querySelector(".nav")
-			const navToggle = document.querySelector(".mobile-nav-toggle")
-			nav.setAttribute("data-visible", false)
 		},
 	},
 }
@@ -125,6 +106,7 @@ body {
 .nav {
 	list-style: none;
 	display: flex;
+	visibility: visible;
 	padding: 0;
 	margin: 0;
 	margin-right: 5rem;
@@ -162,27 +144,8 @@ body {
 
 @media (max-width: 35em) {
 	.nav {
-		--gap: 1em;
-		margin-right: 0;
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 30%;
-		background: var(--bg-black);
-
-		display: flex;
-		flex-direction: column;
-		padding: min(30vh, 10rem) 0;
-
-		-webkit-transform: translate(100%, 0);
-		transform: translateX(100%);
-		transition: transform 350ms ease-out;
-	}
-
-	.nav[data-visible="true"] {
-		-webkit-transform: translate(0%, 0);
-		transform: translateX(0%);
+		display: none;
+		visibility: hidden;
 	}
 
 	.bm-burger-button {

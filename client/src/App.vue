@@ -114,7 +114,7 @@ body {
 }
 
 /* Burger Button */
-.bm-burger-button {
+#app .bm-burger-button {
 	display: none;
 	visibility: hidden;
 

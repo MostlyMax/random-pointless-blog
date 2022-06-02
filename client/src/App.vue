@@ -1,9 +1,14 @@
 <template>
-	<div id="page-container">
+	<div id="app">
+		<Slide right noOverlay :closeOnNavigation="true" >
+			<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
+			<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
+			<router-link :to="{ name: 'Post' }" @click.native="hideNavMenu">Post</router-link>
+    	</Slide>
 		<div id="content-wrap" >
 			<div class="primary-header">
 				<img style="cursor:pointer" src="Protolemon.svg" alt="Protolemon" class="logo" @click="redirectToHome">
-				<button class="mobile-nav-toggle" @click="toggleNavMenu"></button>
+				<!-- <button class="mobile-nav-toggle" @click="toggleNavMenu"></button> -->
 				<div class="nav" data-visible="false">
 					<router-link :to="{ path: '/' }" @click.native="hideNavMenu">Home</router-link>
 					<router-link :to="{ name: 'What' }" @click.native="hideNavMenu">What???</router-link>
@@ -22,9 +27,12 @@
 import Home from './views/Home.vue'
 import What from './views/What.vue'
 import Post from './views/Post.vue'
+import { Slide } from 'vue3-burger-menu'
 
 export default {
-	components: { Home, What, Post },
+	components: { 
+		Home, What, Post, Slide 
+	},
 	// metaInfo: {
 	//   title: "Random Blog",
 	//   titleTemplate: "%s | An Absolutely Pointless Experience"
@@ -61,6 +69,7 @@ export default {
 
 
 <style>
+/* Root Settings */
 :root {
 	--yellow: #ffe45c;
 	--cyan: #2ecbe9;
@@ -69,26 +78,30 @@ export default {
 	--blue: #128fc8;
 	--dark-blue: #00468b;
 	--bg-black: #04192e;
+	
 }
 
-
 body {
+	margin: 0;
+	padding: 0;
+}
+
+#app {
+  	position: relative;
+  	overflow: scroll;
+  	overflow-x: hidden;
+  	min-height: 100vh;
+
 	margin: 0;
 	background-color: var(--bg-white);
 	height: 100%;
 	letter-spacing: 2px;
 	font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#page-container {
-  	position: relative;
-  	overflow: scroll;
-  	overflow-x: hidden;
-  	min-height: 100vh;
+	font-size: min(4vw, 16px);
 }
 
 #content-wrap {
-  	padding-bottom: 2.5rem;    /* Footer height */
+  	padding-bottom: 2.5rem;
 }
 
 #app {
@@ -98,8 +111,10 @@ body {
 	font-weight: bold;
 	color: #0c1e3e;
 	margin: 0;
+	padding: 0;
 }
 
+/* Header and Nav */
 .primary-header {
 	display: flex;
 	align-items: center;
@@ -116,8 +131,33 @@ body {
 	gap: var(--gap, 1rem);
 }
 
-.mobile-nav-toggle {
+/* Burger Button */
+.bm-burger-button {
 	display: none;
+	visibility: hidden;
+
+	position: fixed;
+	width: 36px;
+	height: 30px;
+	right: 36px;
+	left: auto;
+	top: 36px;
+	cursor: pointer;
+}
+
+.bm-burger-bars {
+	background-color: var(--bg-white);
+}
+
+.bm-menu {
+	background-color: var(--bg-black); /* Black*/
+	padding-top: 60px; /* Place content 60px from the top */
+}
+
+.bm-item-list {
+	margin-left: 10%;
+	margin-right: 10%;
+	padding: 10px;
 }
 
 @media (max-width: 35em) {
@@ -145,6 +185,11 @@ body {
 		transform: translateX(0%);
 	}
 
+	.bm-burger-button {
+		display: block;
+		visibility: visible;
+	}
+
 	.mobile-nav-toggle {
 		display: block;
 		z-index: 99;
@@ -162,7 +207,8 @@ body {
 	}
 }
 
-.nav a {
+.nav a,
+.bm-item-list a {
 	text-decoration: none;
 
 	color: var(--text-white);
@@ -173,6 +219,12 @@ body {
 	margin: 15px;
 }
 
+.bm-item-list a {
+	margin: 2em 0;
+}
+
+.bm-item-list a.router-link-exact-active,
+.bm-item-list a:hover, 
 .nav a.router-link-exact-active,
 .nav a:hover {
 	color: var(--bg-black);
@@ -202,7 +254,7 @@ body {
 	height: 70px;
 	width: 70px;
 	margin: 1rem;
-	margin-left: 3rem;
+	margin-left: 1rem;
 }
 
 </style>

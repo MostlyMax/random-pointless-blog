@@ -43,10 +43,22 @@ export default {
 
 <style>
 .home-page {
-    font-size: 20px;
+    font-size: min(4vw, 16px);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.home-page h1 {
+    font-weight: 900;
+}
+
+@media (max-width: 35em) {
+    .home-page {
+        justify-content: flex-start;
+    }
+}
+
+
 
 </style>

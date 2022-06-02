@@ -101,6 +101,14 @@ export default {
     font: inherit;
 }
 
+@media (max-width: 35em) {
+    .entry-form {
+        border-radius: 5px;
+        margin: 0;
+        padding: 10px 0;
+    }
+}
+
 .entry-form button {
     background: var(--blue);
     color: var(--text-white);
@@ -111,7 +119,7 @@ export default {
     margin: 20px 0px 0px 0px;
     padding: 10px;
     border-style: none;
-    font-size: 20px;
+    font-size: min(2vh, 3vw);
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -125,7 +133,7 @@ export default {
     margin: 10px 30px;
     font-weight: bold;
     padding: 10px;
-    font-size: 24px;
+    font-size: x-large;
     background-color: var(--bg-black);
     color: var(--text-white);
     border: 1px solid var(--cyan);

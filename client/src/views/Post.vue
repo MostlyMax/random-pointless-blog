@@ -101,6 +101,14 @@ export default {
     font: inherit;
 }
 
+@media (max-width: 35em) {
+    .entry-form {
+        border-radius: 5px;
+        margin: 0;
+        padding: 10px 0;
+    }
+}
+
 .entry-form button {
     background: var(--blue);
     color: var(--text-white);

@@ -32,7 +32,7 @@ export default {
 
 @media (max-width: 35em) {
     .post {
-        border-radius: 0;
+        border-radius: 5px;
         margin: 5px 0 5px 0;
         padding: 10px;
     }
